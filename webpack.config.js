@@ -1,11 +1,16 @@
+const webpack = require('webpack');
 const path = require('path');
 
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
-    entry: './src/index.js',
+    entry: [
+        'webpack/hot/dev-server',
+        'webpack-hot-middleware/client',
+        path.join(__dirname, './src/index.js')
+    ],
     output: {
-        path: path.resolve('dist'),
+        path: path.join(__dirname, 'dist'),
         filename: 'index_bundle.js',
         pathinfo: true, // helps with devtool: eval
         publicPath: '/'      
@@ -17,8 +22,8 @@ module.exports = {
     },
     module: {
         loaders: [
-            { test: /\.js$/, loader: 'babel-loader', exclude: /node_modules/ },
-            { test: /\.jsx$/, loader: 'babel-loader', exclude: /node_modules/ },
+            { test: /\.js$/, loader: 'babel-loader', query: { presets: ['es2015', 'react', 'react-hmre' ] }, exclude: /node_modules/ },
+            { test: /\.jsx$/, loader: 'babel-loader', query: { presets: ['es2015', 'react', 'react-hmre' ] }, exclude: /node_modules/ },
             { test: /\.scss$/, use: [ 
                 'style-loader', 
                 { loader: 'css-loader', query: { modules: true, localIdentName: '[name]__[local]___[hash:base64:5]' } },
@@ -28,6 +33,7 @@ module.exports = {
         ]
     },
     plugins: [
+        new webpack.HotModuleReplacementPlugin(),
         new HtmlWebpackPlugin({
             title: 'React',
             template: './config/index.template.ejs'
