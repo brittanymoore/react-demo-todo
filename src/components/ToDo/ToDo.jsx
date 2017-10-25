@@ -12,7 +12,8 @@ export class ToDo extends React.Component {
         this.state = {
             tasks: [],
             loading: true
-        }
+        };
+        this.API_URL = process.env.API_URL;
     }
 
     onAddTask(task) {
@@ -22,7 +23,7 @@ export class ToDo extends React.Component {
     }
 
     componentDidMount() {
-        axios.get('http://localhost:3001/tasks')
+        axios.get(`${this.API_URL}/tasks`)
             .then((res) => {
                 const tasks = res.data;
                 this.setState({ loading: false, tasks: tasks });

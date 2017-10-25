@@ -3,8 +3,7 @@ import express from 'express';
 import webpack from 'webpack';
 import webpackMiddleware from 'webpack-dev-middleware';
 import webpackHotMiddleware from 'webpack-hot-middleware';
-import config from './webpack.config.js';
-import axios from 'axios';
+import config from './config/webpack.dev.js';
 
 const jsonServer = require('json-server');
 const server = jsonServer.create();
@@ -20,11 +19,11 @@ server.listen(3001, () => {
 const app = express();
 const compiler = webpack(config);
 
-app.use(express.static(__dirname + '/dev'));
+app.use(express.static(path.resolve(__dirname, './dev')));
 app.use(webpackMiddleware(compiler));
 app.use(webpackHotMiddleware(compiler));
 app.get('*', function response(req, res) {
-    res.sendFile(path.join(__dirname, 'dev/index.html'));
+    res.sendFile(path.resolve(__dirname, './dev/index.html'));
 });
 
 app.listen(3000, () => {

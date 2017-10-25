@@ -1,23 +1,27 @@
 {
-    "name": "react-seed",
+    "name": "react-demo-todo",
     "version": "1.0.0",
     "description": "",
     "scripts": {
-        "build": "webpack --env=dev",
+        "build": "webpack --env=dev --progress",
+        "build:prod": "webpack --env=prod --progress",
         "start": "babel-node server.js",
-        "start:webpack": "webpack-dev-server --env=dev --open"
+        "start:webpack": "webpack-dev-server --env=dev --open --no-info"
     },
     "author": "Brittany Moore <brittanymoore>",
     "license": "MIT",
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/brittanymoore/react-demo-todo.git"
+    },
     "dependencies": {
+        "axios": "^0.17.0",
         "prop-types": "^15.6.0",
         "react": "^16.0.0",
         "react-dom": "^16.0.0",
         "react-router-dom": "^4.2.2"
     },
     "devDependencies": {
-        "axios": "^0.17.0",
-        "axios-mock-adapter": "^1.9.0",
         "babel-cli": "^6.26.0",
         "babel-core": "^6.25.0",
         "babel-loader": "^7.1.1",
@@ -29,14 +33,16 @@
         "express": "^4.16.2",
         "html-webpack-plugin": "^2.29.0",
         "json-server": "^0.12.0",
-        "nock": "^9.0.25",
         "node-sass": "^4.5.3",
         "path": "^0.12.7",
         "sass-loader": "^6.0.6",
         "style-loader": "^0.19.0",
+        "uglifyjs-webpack-plugin": "^1.0.1",
         "webpack": "^3.3.0",
+        "webpack-chunk-hash": "^0.5.0",
         "webpack-dev-middleware": "^1.12.0",
         "webpack-dev-server": "^2.5.1",
-        "webpack-hot-middleware": "^2.20.0"
+        "webpack-hot-middleware": "^2.20.0",
+        "webpack-merge": "^4.1.0"
     }
 }

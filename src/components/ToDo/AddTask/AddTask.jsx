@@ -10,6 +10,7 @@ export class AddTask extends React.Component {
         this.state = {
             name: ''
         };
+        this.API_URL = process.env.API_URL;
 
         this.handleInputChange = this.handleInputChange.bind(this);
         this.handleFormSubmit = this.handleFormSubmit.bind(this);
@@ -26,7 +27,7 @@ export class AddTask extends React.Component {
 
     handleFormSubmit(event) {
         event.preventDefault();
-        axios.post('http://localhost:3001/tasks', this.state)
+        axios.post(`${this.API_URL}/tasks`, this.state)
             .then((res) => {
                 this.props.onAdd(res.data);
                 this.setState({ name: '' });
