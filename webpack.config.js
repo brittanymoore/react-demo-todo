@@ -22,8 +22,8 @@ module.exports = {
     },
     module: {
         loaders: [
-            { test: /\.js$/, loader: 'babel-loader', query: { presets: ['es2015', 'react', 'react-hmre' ] }, exclude: /node_modules/ },
-            { test: /\.jsx$/, loader: 'babel-loader', query: { presets: ['es2015', 'react', 'react-hmre' ] }, exclude: /node_modules/ },
+            { test: /\.js$/, loader: 'babel-loader', query: { presets: ['es2015', 'react', 'react-hmre', 'stage-2' ] }, exclude: /node_modules/ },
+            { test: /\.jsx$/, loader: 'babel-loader', query: { presets: ['es2015', 'react', 'react-hmre', 'stage-2' ] }, exclude: /node_modules/ },
             { test: /\.scss$/, use: [ 
                 'style-loader', 
                 { loader: 'css-loader', query: { modules: true, localIdentName: '[name]__[local]___[hash:base64:5]' } },
