@@ -4,6 +4,7 @@ import webpack from 'webpack';
 import webpackMiddleware from 'webpack-dev-middleware';
 import webpackHotMiddleware from 'webpack-hot-middleware';
 import config from './config/webpack.dev.js';
+import opn from 'opn';
 
 const jsonServer = require('json-server');
 const server = jsonServer.create();
@@ -20,12 +21,24 @@ const app = express();
 const compiler = webpack(config);
 
 app.use(express.static(path.resolve(__dirname, './dev')));
-app.use(webpackMiddleware(compiler));
+app.use(webpackMiddleware(compiler, {
+    noInfo: true,
+    publicPath: '/'
+}));
 app.use(webpackHotMiddleware(compiler));
-app.get('*', function response(req, res) {
-    res.sendFile(path.resolve(__dirname, './dev/index.html'));
+app.get('*', (req, res) => {
+    const filename = path.join(compiler.outputPath, 'index.html');
+    compiler.outputFileSystem.readFile(filename, function(err, result) {
+        if (err) {
+            return next(err);
+        }
+        res.set('content-type', 'text/html');
+        res.send(result);
+        res.end();
+    });
 });
 
 app.listen(3000, () => {
     console.log('app is running');
+    opn('http://localhost:3000');
 });
