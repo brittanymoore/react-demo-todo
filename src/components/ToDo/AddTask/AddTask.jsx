@@ -3,6 +3,10 @@ import PropTypes from 'prop-types';
 import axios from 'axios';
 
 export class AddTask extends React.Component {
+	static propTypes = {
+		onAdd: PropTypes.func
+	}
+
 	constructor(props) {
 		super(props);
 		this.state = {
@@ -33,7 +37,6 @@ export class AddTask extends React.Component {
 	}
 
 	render() {
-
 		const { name } = this.state;
 		const canSubmit = name && name.length > 0;
 
@@ -47,8 +50,4 @@ export class AddTask extends React.Component {
 			</form>
 		);
 	}
-}
-
-AddTask.propTypes = {
-	onAdd: PropTypes.func
 }
