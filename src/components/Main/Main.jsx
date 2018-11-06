@@ -9,7 +9,7 @@ export const Main = () => (
     <main className={styles.main}>
         <Switch>
             <Route exact path="/todo" component={ToDo} />
-            <Redirect from="" to="/todo" />
+            <Redirect from="/" to="/todo" />
         </Switch>
     </main>
 );

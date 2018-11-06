@@ -1,0 +1,57 @@
+const path = require('path')
+const webpack = require('webpack')
+const webpackMerge = require('webpack-merge')
+const MiniCssExtractPlugin = require('mini-css-extract-plugin')
+const commonConfig = require('./webpack.common')
+
+module.exports = webpackMerge(commonConfig, {
+  mode: 'production',
+
+  output: {
+    path: path.resolve(__dirname, './../dist')
+  },
+
+  module: {
+    rules: [
+      {
+        test: /\.css$/,
+        use: [MiniCssExtractPlugin.loader, 'css-loader'],
+        include: [/node_modules/],
+        exclude: [/src\/styles.css/]
+      },
+      {
+        test: /\.scss$/,
+        use: [MiniCssExtractPlugin.loader, 'css-loader', 'sass-loader'],
+        include: [/src\/styles.css/],
+        exclude: [/node_modules/]
+      },
+      {
+        test: /\.scss$/,
+        use: [
+          'style-loader',
+          {
+            loader: 'css-loader',
+            query: {
+              modules: true,
+              localIdentName: '[name]__[local]___[hash:base64:5]'
+            }
+          },
+          'sass-loader'
+        ],
+        exclude: [/node_modules/, /src\/styles.css/]
+      }
+    ]
+  },
+
+  plugins: [
+    new MiniCssExtractPlugin({
+      filename: 'styles/[name].[hash].css'
+    }),
+    new webpack.DefinePlugin({
+      'process.env': {
+        NODE_ENV: JSON.stringify('production'),
+        API_URL: JSON.stringify('http://localhost:3001')
+      }
+    })
+  ]
+})

@@ -15,20 +15,8 @@ npm install
 To run the app in development mode:
 
 ```
-npm start
+npm run start:server
+npm run start
 ```
 
 Open a browser window and navigate to localhost:3000.
-
-### Build
-
-| Build Mode        | Command(s)     | Output   | Uglify |
-| ----------------- | -------------- | -------  | ------ |
-| Dev               | build          | dev      | false  |
-|                   | start          |          |        |
-| Prod              | build:prod     | dist     | true   |
-
-
-```
-npm run start
-```
