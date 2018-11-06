@@ -3,9 +3,7 @@ import PropTypes from 'prop-types';
 import axios from 'axios';
 
 export class AddTask extends React.Component {
-
 	constructor(props) {
-
 		super(props);
 		this.state = {
 			name: ''
@@ -41,14 +39,14 @@ export class AddTask extends React.Component {
 
 		return (
 			<form noValidate onSubmit={this.handleFormSubmit}>
-				<label>Add a task:
-                    <input type="text" name="name" id="taskName" value={this.state.name} onChange={this.handleInputChange} />
+				<label htmlFor="taskName">
+					Add a task:
+          <input type="text" name="name" id="taskName" value={this.state.name} onChange={this.handleInputChange} />
 				</label>
 				<button type="submit" disabled={!canSubmit}>Add</button>
 			</form>
 		);
 	}
-
 }
 
 AddTask.propTypes = {

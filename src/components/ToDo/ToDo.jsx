@@ -14,12 +14,8 @@ export class ToDo extends React.Component {
 			loading: true
 		};
 		this.API_URL = process.env.API_URL;
-	}
 
-	onAddTask(task) {
-		const tasks = this.state.tasks;
-		tasks.push(task);
-		this.setState({ tasks: tasks });
+		this.onAddTask = this.onAddTask.bind(this);
 	}
 
 	componentDidMount() {
@@ -28,6 +24,12 @@ export class ToDo extends React.Component {
 				const tasks = res.data;
 				this.setState({ loading: false, tasks: tasks });
 			});
+	}
+
+	onAddTask(task) {
+		const tasks = this.state.tasks;
+		tasks.push(task);
+		this.setState({ tasks: tasks });
 	}
 
 	render() {
@@ -43,19 +45,19 @@ export class ToDo extends React.Component {
 					}
 					<ul className={styles['todo-list']}>
 						{this.state.tasks.map(task =>
-							<li key={task.id}>
+							(<li key={task.id}>
 								{task.name}
 								<div className={styles['task-complete']}>
-									<span className="fa fa-check-circle"></span>
+									<span className="fa fa-check-circle" />
 								</div>
-							</li>
+        </li>)
 						)}
 					</ul>
 
 				</div>
 				<hr />
 				<div className={styles.card}>
-					<AddTask onAdd={this.onAddTask.bind(this)} />
+					<AddTask onAdd={this.onAddTask} />
 				</div>
 			</div>
 		);
