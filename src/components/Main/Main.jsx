@@ -6,10 +6,10 @@ import styles from './Main.css';
 import { ToDo } from './../ToDo/ToDo';
 
 export const Main = () => (
-    <main className={styles.main}>
-        <Switch>
-            <Route exact path="/todo" component={ToDo} />
-            <Redirect from="/" to="/todo" />
-        </Switch>
-    </main>
+	<main className={styles.main}>
+		<Switch>
+			<Route exact path="/todo" component={ToDo} />
+			<Redirect from="/" to="/todo" />
+		</Switch>
+	</main>
 );

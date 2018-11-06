@@ -1,10 +1,10 @@
 .header {
-    background-color: navy;
-    color: #ffffff;
-    padding: 10px 20px;
+	background-color: navy;
+	color: #ffffff;
+	padding: 10px 20px;
 }
 
 .header h1 {
-    font-size: 1.5em;
-    margin: 0;
+	font-size: 1.5em;
+	margin: 0;
 }
