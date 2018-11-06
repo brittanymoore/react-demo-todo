@@ -20,13 +20,20 @@ module.exports = webpackMerge(commonConfig, {
         exclude: [/src\/styles.css/]
       },
       {
-        test: /\.scss$/,
-        use: [MiniCssExtractPlugin.loader, 'css-loader', 'sass-loader'],
+        test: /\.css$/,
+        use: [
+          MiniCssExtractPlugin.loader,
+          'css-loader',
+          {
+            loader: 'postcss-loader',
+            options: { config: { path: './config/postcss/production/' } }
+          }
+        ],
         include: [/src\/styles.css/],
         exclude: [/node_modules/]
       },
       {
-        test: /\.scss$/,
+        test: /\.css$/,
         use: [
           'style-loader',
           {
@@ -36,7 +43,10 @@ module.exports = webpackMerge(commonConfig, {
               localIdentName: '[name]__[local]___[hash:base64:5]'
             }
           },
-          'sass-loader'
+          {
+            loader: 'postcss-loader',
+            options: { config: { path: './config/postcss/production/' } }
+          }
         ],
         exclude: [/node_modules/, /src\/styles.css/]
       }

@@ -18,7 +18,7 @@ module.exports = webpackMerge(commonConfig, {
         include: [/node_modules/, /src\/styles.css/]
       },
       {
-        test: /\.scss$/,
+        test: /\.css$/,
         use: [
           'style-loader',
           {
@@ -28,7 +28,10 @@ module.exports = webpackMerge(commonConfig, {
               localIdentName: '[name]__[local]___[hash:base64:5]'
             }
           },
-          'sass-loader'
+          {
+            loader: 'postcss-loader',
+            options: { config: { path: './config/postcss/development/' } }
+          }
         ],
         exclude: [/node_modules/, /src\/styles.css/]
       }

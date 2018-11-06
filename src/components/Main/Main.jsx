@@ -1,7 +1,7 @@
 import React from 'react';
 import { Switch, Route, Redirect } from 'react-router-dom';
 
-import styles from './Main.scss';
+import styles from './Main.css';
 
 import { ToDo } from './../ToDo/ToDo';
 

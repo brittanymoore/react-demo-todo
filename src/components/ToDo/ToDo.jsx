@@ -3,7 +3,7 @@ import axios from 'axios';
 
 import { AddTask } from './AddTask/AddTask';
 
-import styles from './ToDo.scss';
+import styles from './ToDo.css';
 
 export class ToDo extends React.Component {
 

@@ -1,9 +1,3 @@
-$lightPink: #f972d6;
-$darkPink: #f123bb;
-
-$listItem: $lightPink;
-$listItemHover: $darkPink;
-
 .todo-list-container {
     border: 1px solid #f0f0f0;
     padding: 10;
@@ -16,7 +10,7 @@ $listItemHover: $darkPink;
     font-size: 1em;
     padding: 5px;
     color: #ffffff;
-    background-color: $darkPink;
+    background-color: #f123bb;
     border-radius: 4px;
 }
 
@@ -35,7 +29,7 @@ $listItemHover: $darkPink;
 }
 
 .todo-list > li.complete .fa {
-    color: $darkPink;
+    color: #f123bb;
 }
 
 .todo-list > li.complete {
@@ -54,5 +48,5 @@ $listItemHover: $darkPink;
 }
 
 .completed, .task-complete > .fa:hover {
-    color: $darkPink;
+    color: #f123bb;
 }
