@@ -1,6 +1,7 @@
 const path = require('path')
 const webpack = require('webpack')
 const webpackMerge = require('webpack-merge')
+const WebpackChunkHash = require('webpack-chunk-hash')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const commonConfig = require('./webpack.common')
 
@@ -8,7 +9,8 @@ module.exports = webpackMerge(commonConfig, {
   mode: 'production',
 
   output: {
-    path: path.resolve(__dirname, './../dist')
+    path: path.resolve(__dirname, './../dist'),
+    filename: '[name].[chunkhash].min.js'
   },
 
   module: {
@@ -57,6 +59,8 @@ module.exports = webpackMerge(commonConfig, {
     new MiniCssExtractPlugin({
       filename: 'styles/[name].[hash].css'
     }),
+    new webpack.HashedModuleIdsPlugin(),
+    new WebpackChunkHash(),
     new webpack.DefinePlugin({
       'process.env': {
         NODE_ENV: JSON.stringify('production'),
