@@ -4,11 +4,11 @@
 	"description": "",
 	"scripts": {
 		"build": "MODE=production webpack",
-		"format": "prettier-standard src/**/*.js src/**/*.jsx config/*.js",
+		"format": "prettier-standard src/**/*.js src/**/*.jsx config/*.js server/**/*.js",
 		"lint": "eslint '**/*.{js,jsx}' --config ./config/lint/.eslintrc --ignore-path ./config/lint/.eslintignore --fix",
 		"start": "MODE=development webpack-dev-server",
 		"start:prod": "MODE=production webpack-dev-server",
-		"start:server": "node server.js",
+		"start:server": "node server/server.js",
 		"test": "jest --config=./config/test/jest.config.js"
 	},
 	"author": "Brittany Moore <brittanymoore>",
