@@ -18,9 +18,9 @@ export class TaskListContainer extends React.Component {
 
   constructor (props) {
     super(props)
+
     this.state = {
-      tasks: [],
-      loading: true
+      tasks: []
     }
 
     this.handleAdd = this.handleAdd.bind(this)
@@ -31,7 +31,7 @@ export class TaskListContainer extends React.Component {
     const { client, apiUrl } = this.props
     client.get(`${apiUrl}/tasks`).then(res => {
       const tasks = res.data
-      this.setState({ loading: false, tasks: tasks })
+      this.setState({ tasks })
     })
   }
 
@@ -53,16 +53,11 @@ export class TaskListContainer extends React.Component {
   }
 
   render () {
-    const { loading, tasks } = this.state
+    const { tasks } = this.state
 
     return (
       <div>
-        <TaskList
-          name="My List"
-          tasks={tasks}
-          loading={loading}
-          onToggle={this.handleToggle}
-        />
+        <TaskList name="My List" tasks={tasks} onToggle={this.handleToggle} />
         <TaskFormContainer onAdd={this.handleAdd} />
       </div>
     )

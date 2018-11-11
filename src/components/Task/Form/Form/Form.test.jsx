@@ -5,6 +5,10 @@ import { TaskForm } from './Form'
 import { Input } from '../../../UI/Input/Input'
 
 describe('TaskForm', () => {
+  afterEach(() => {
+    td.reset()
+  })
+
   it('shallow renders without crashing', () => {
     shallow(<TaskForm />)
   })

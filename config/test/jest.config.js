@@ -8,11 +8,7 @@ module.exports = {
   setupTestFrameworkScriptFile: '<rootDir>/config/test/setup.js',
 
   // exclude App and index from coverage, since they contain no business logic.
-  collectCoverageFrom: [
-    'src/**/*.{js,jsx,mjs}',
-    '!src/index.js',
-    '!src/App.js'
-  ],
+  collectCoverageFrom: ['src/**/*.{js,jsx}', '!src/index.jsx', '!src/App.jsx'],
 
   // resolves CSS Module class names while testing
   moduleNameMapper: {

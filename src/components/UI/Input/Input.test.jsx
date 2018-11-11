@@ -4,6 +4,10 @@ import td from 'testdouble'
 import { Input } from './Input'
 
 describe('Input', () => {
+  afterEach(() => {
+    td.reset()
+  })
+
   it('shallow renders without crashing', () => {
     shallow(<Input />)
   })
