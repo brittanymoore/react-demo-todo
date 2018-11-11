@@ -3,7 +3,6 @@
  */
 
 module.exports = {
-
   rootDir: '../../',
 
   setupTestFrameworkScriptFile: '<rootDir>/config/test/setup.js',
@@ -12,18 +11,18 @@ module.exports = {
   collectCoverageFrom: [
     'src/**/*.{js,jsx,mjs}',
     '!src/index.js',
-    '!src/App.js',
+    '!src/App.js'
   ],
 
   // resolves CSS Module class names while testing
   moduleNameMapper: {
-    '\\.(css)$': 'identity-obj-proxy',
+    '\\.(css)$': 'identity-obj-proxy'
   },
 
   // specify patterns that locate test files
   testMatch: [
     '<rootDir>/src/**/__tests__/**/*.{js,jsx,mjs}',
-    '<rootDir>/src/**/?(*.)(spec|test).{js,jsx,mjs}',
+    '<rootDir>/src/**/?(*.)(spec|test).{js,jsx,mjs}'
   ],
 
   transform: {
@@ -31,11 +30,9 @@ module.exports = {
     '^.+\\.(js|jsx|mjs)$': '<rootDir>/node_modules/babel-jest',
     // ignore css and other file imports
     '^.+\\.css$': '<rootDir>/config/test/transformImport.js',
-    '^(?!.*\\.(js|jsx|mjs|css|json)$)': '<rootDir>/config/test/transformImport.js',
+    '^(?!.*\\.(js|jsx|mjs|css|json)$)':
+      '<rootDir>/config/test/transformImport.js'
   },
 
-  transformIgnorePatterns: [
-    '[/\\\\]node_modules[/\\\\].+\\.(js|jsx|mjs)$',
-  ],
-
-};
+  transformIgnorePatterns: ['[/\\\\]node_modules[/\\\\].+\\.(js|jsx|mjs)$']
+}
