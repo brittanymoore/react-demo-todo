@@ -1,9 +1,9 @@
 import React from 'react' // eslint-disable-line no-unused-vars
 import { shallow } from 'enzyme'
-import { ToDo } from './ToDo'
+import { TaskListContainer } from './index'
 
-describe('ToDo', () => {
+describe('TaskListContainer', () => {
   it('shallow renders without crashing', () => {
-    shallow(<ToDo />)
+    shallow(<TaskListContainer />)
   })
 })

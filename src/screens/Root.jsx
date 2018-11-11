@@ -6,13 +6,13 @@ import {
   Switch
 } from 'react-router-dom'
 
-import { ScreensToDo } from './ToDo'
+import { ScreensTasks } from './Tasks'
 
 export const ScreensRoot = () => (
   <Router>
     <Switch>
-      <Route exact path="/todo" component={ScreensToDo} />
-      <Redirect from="/" to="/todo" />
+      <Route exact path="/tasks" component={ScreensTasks} />
+      <Redirect from="/" to="/tasks" />
     </Switch>
   </Router>
 )
