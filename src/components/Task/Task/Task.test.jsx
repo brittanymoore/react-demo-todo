@@ -1,13 +1,8 @@
 import React from 'react'
 import { shallow } from 'enzyme'
-import td from 'testdouble'
 import { Task } from './Task'
 
 describe('Task', () => {
-  afterEach(() => {
-    td.reset()
-  })
-
   it('shallow renders without crashing', () => {
     shallow(<Task task={{}} />)
   })

@@ -1,14 +1,9 @@
 import React from 'react'
 import { shallow } from 'enzyme'
-import td from 'testdouble'
 import { TaskFormContainer } from './index'
 import { TaskForm } from './Form/Form'
 
 describe('TaskFormContainer', () => {
-  afterEach(() => {
-    td.reset()
-  })
-
   it('shallow renders without crashing', () => {
     shallow(<TaskFormContainer />)
   })

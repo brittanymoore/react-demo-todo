@@ -1,6 +1,5 @@
 import React from 'react' // eslint-disable-line no-unused-vars
 import { shallow } from 'enzyme'
-import td from 'testdouble'
 import { TaskListContainer } from './index'
 import { TaskList } from './List/List'
 import { TaskFormContainer } from '../Form'
@@ -10,10 +9,6 @@ function flushPromises () {
 }
 
 describe('TaskListContainer', () => {
-  afterEach(() => {
-    td.reset()
-  })
-
   it('shallow renders without crashing', async () => {
     const client = td.object(['get'])
     const apiUrl = '/api'
