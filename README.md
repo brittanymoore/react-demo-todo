@@ -49,5 +49,3 @@ The current configuration, which can be found in `config/lint`, uses a combinati
 ### Precommit Formatting
 
 This repository uses `husky`, `lint-staged`, and `prettier-standard` to auto-format code prior to each commit.
-
-*Note*: The `.eslintrc` file in the root of this project is _only_ used to override the JSX quotes settings in `prettier-standard`. Since one of the benefits of using an opinionated formatter is reduced opportunity for bikeshedding, treat that file as immutable.

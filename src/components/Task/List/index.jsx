@@ -52,8 +52,8 @@ export class TaskListContainer extends React.Component {
     const { tasks } = this.state
 
     return (
-      <div data-test="task-list">
-        <TaskList name="My List" tasks={tasks} onToggle={this.handleToggle} />
+      <div data-test='task-list'>
+        <TaskList name='My List' tasks={tasks} onToggle={this.handleToggle} />
         <TaskFormContainer onAdd={this.handleAdd} />
       </div>
     )

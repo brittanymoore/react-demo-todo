@@ -35,7 +35,7 @@ export class Task extends React.Component {
         <div className={styles['task-complete']}>
           <span
             onClick={this.handleToggle}
-            role="button"
+            role='button'
             tabIndex={0}
             onKeyUp={this.handleKeyup}
             className={`${styles.icon} material-icons`}

@@ -4,7 +4,7 @@ import { ScreensRoot } from './screens/Root'
 import { Header } from './components/UI/Header/Header'
 
 const AppComponent = () => (
-  <div id="app">
+  <div id='app'>
     <Header />
     <main>
       <ScreensRoot />

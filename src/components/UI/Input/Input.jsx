@@ -32,7 +32,7 @@ export class Input extends React.Component {
       <label htmlFor={id}>
         <span className={styles['label-text']}>{children}</span>
         <input
-          type="text"
+          type='text'
           name={name}
           id={id}
           value={value}

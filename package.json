@@ -10,6 +10,7 @@
 	},
 	"scripts": {
 		"build": "MODE=production webpack",
+		"format": "prettier-standard '**/*.{js,jsx}' '!node_modules' '!dist'",
 		"lint": "eslint '**/*.{js,jsx}' --config ./config/lint/.eslintrc --ignore-path ./config/lint/.eslintignore --fix",
 		"start": "MODE=development webpack-dev-server",
 		"start:server": "node server/server.js",
