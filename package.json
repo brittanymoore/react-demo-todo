@@ -12,7 +12,6 @@
 		"build": "MODE=production webpack",
 		"lint": "eslint '**/*.{js,jsx}' --config ./config/lint/.eslintrc --ignore-path ./config/lint/.eslintignore --fix",
 		"start": "MODE=development webpack-dev-server",
-		"start:prod": "MODE=production webpack-dev-server",
 		"start:server": "node server/server.js",
 		"test": "jest --config=./config/test/jest.config.js",
 		"test:coverage": "npm run test -- --coverage",

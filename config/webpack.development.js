@@ -43,7 +43,7 @@ module.exports = webpackMerge(commonConfig, {
     new webpack.DefinePlugin({
       'process.env': {
         NODE_ENV: JSON.stringify('development'),
-        API_URL: JSON.stringify('http://localhost:3001')
+        API_URL: JSON.stringify('/api')
       }
     })
   ],
@@ -54,6 +54,12 @@ module.exports = webpackMerge(commonConfig, {
     host: '0.0.0.0',
     public: '0.0.0.0',
     port: 3000,
+    proxy: {
+      '/api': {
+        target: 'http://localhost:3001',
+        pathRewrite: { '^/api': '' }
+      }
+    },
     stats: commonConfig.stats
   }
 })
