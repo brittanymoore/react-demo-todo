@@ -1,19 +1,17 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import axios from 'axios'
+import { TasksApi } from '../../../api/tasks'
 
 import { TaskList } from './List/List'
 import { TaskFormContainer } from './../Form'
 
 export class TaskListContainer extends React.Component {
   static propTypes = {
-    client: PropTypes.any,
-    apiUrl: PropTypes.string
+    api: PropTypes.any
   }
 
   static defaultProps = {
-    client: axios,
-    apiUrl: process.env.API_URL
+    api: new TasksApi()
   }
 
   constructor (props) {
@@ -28,8 +26,7 @@ export class TaskListContainer extends React.Component {
   }
 
   componentDidMount () {
-    const { client, apiUrl } = this.props
-    client.get(`${apiUrl}/tasks`).then(res => {
+    this.props.api.getTasks().then(res => {
       const tasks = res.data
       this.setState({ tasks })
     })
@@ -42,12 +39,11 @@ export class TaskListContainer extends React.Component {
   }
 
   handleToggle (id) {
-    const { client, apiUrl } = this.props
     const tasks = this.state.tasks
     const task = tasks.find(task => task.id === id)
     task.complete = !task.complete
 
-    client.put(`${apiUrl}/tasks/${id}`, task).then(() => {
+    this.props.api.updateTask(task.id, task).then(() => {
       this.setState({ tasks })
     })
   }

@@ -10,74 +10,54 @@ function flushPromises () {
 
 describe('TaskListContainer', () => {
   it('shallow renders without crashing', async () => {
-    const client = td.object(['get'])
-    const apiUrl = '/api'
-    td.when(client.get('/api/tasks')).thenResolve({ data: [] })
+    const api = td.object(['getTasks'])
+    td.when(api.getTasks()).thenResolve({ data: [] })
 
     await flushPromises()
 
-    shallow(<TaskListContainer client={client} apiUrl={apiUrl} />)
+    shallow(<TaskListContainer api={api} />)
   })
 
   it('should get tasks', async () => {
-    const client = td.object(['get'])
-    const apiUrl = '/api'
+    const api = td.object(['getTasks'])
     const tasks = [{ id: 'the-task' }]
+    td.when(api.getTasks()).thenResolve({ data: tasks })
 
-    td.when(client.get('/api/tasks')).thenResolve({ data: tasks })
-
-    const subject = shallow(
-      <TaskListContainer client={client} apiUrl={apiUrl} />
-    )
-
+    const subject = shallow(<TaskListContainer api={api} />)
     await flushPromises()
+
     expect(subject.find(TaskList).props().tasks).toEqual(tasks)
   })
 
   it('should add a task', async () => {
-    const client = td.object(['get', 'put'])
-    const apiUrl = '/api'
+    const api = td.object(['getTasks', 'addTask'])
     const tasks = []
 
-    td.when(client.get('/api/tasks')).thenResolve({ data: tasks })
+    td.when(api.getTasks()).thenResolve({ data: tasks })
 
-    const subject = shallow(
-      <TaskListContainer client={client} apiUrl={apiUrl} />
-    )
-
+    const subject = shallow(<TaskListContainer api={api} />)
     await flushPromises()
-    subject.find(TaskFormContainer).simulate('add', {
-      id: 'the-new-task'
-    })
-
+    subject.find(TaskFormContainer).simulate('add', { id: 'new-task' })
     await flushPromises()
-    expect(subject.find(TaskList).props().tasks).toEqual([
-      {
-        id: 'the-new-task'
-      }
-    ])
+
+    expect(subject.find(TaskList).props().tasks).toEqual([{ id: 'new-task' }])
   })
 
   it('should toggle task completion', async () => {
-    const client = td.object(['get', 'put'])
-    const apiUrl = '/api'
+    const api = td.object(['getTasks', 'updateTask'])
     const tasks = [{ id: 'the-task' }]
 
-    td.when(client.get('/api/tasks')).thenResolve({ data: tasks })
+    td.when(api.getTasks()).thenResolve({ data: tasks })
     td
-      .when(
-        client.put('/api/tasks/the-task', { id: 'the-task', complete: true })
-      )
+      .when(api.updateTask('the-task', { id: 'the-task', complete: true }))
       .thenResolve({})
 
-    const subject = shallow(
-      <TaskListContainer client={client} apiUrl={apiUrl} />
-    )
-
+    const subject = shallow(<TaskListContainer api={api} />)
     await flushPromises()
+
     subject.find(TaskList).simulate('toggle', 'the-task')
-
     await flushPromises()
+
     expect(subject.find(TaskList).props().tasks).toEqual([
       {
         id: 'the-task',

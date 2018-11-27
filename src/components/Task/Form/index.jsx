@@ -1,19 +1,17 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import axios from 'axios'
+import { TasksApi } from '../../../api/tasks'
 
 import { TaskForm } from './Form/Form'
 
 export class TaskFormContainer extends React.Component {
   static propTypes = {
     onAdd: PropTypes.func,
-    client: PropTypes.any,
-    apiUrl: PropTypes.string
+    api: PropTypes.any
   }
 
   static defaultProps = {
-    client: axios,
-    apiUrl: process.env.API_URL
+    api: new TasksApi()
   }
 
   constructor (props) {
@@ -23,9 +21,7 @@ export class TaskFormContainer extends React.Component {
   }
 
   handleSubmit (task) {
-    this.props.client
-      .post(`${this.props.apiUrl}/tasks`, task)
-      .then(res => this.props.onAdd(res.data))
+    this.props.api.addTask(task).then(res => this.props.onAdd(res.data))
   }
 
   render () {

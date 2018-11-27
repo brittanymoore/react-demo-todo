@@ -10,12 +10,10 @@ describe('TaskFormContainer', () => {
 
   it('should wire up add handler', () => {
     const handleAdd = td.func()
-    const client = td.object(['post'])
-    const subject = shallow(
-      <TaskFormContainer onAdd={handleAdd} client={client} apiUrl="/api" />
-    )
+    const api = td.object(['addTask'])
+    const subject = shallow(<TaskFormContainer onAdd={handleAdd} api={api} />)
 
-    td.when(client.post('/api/tasks', 'task')).thenResolve({
+    td.when(api.addTask('task')).thenResolve({
       data: 'data'
     })
 
