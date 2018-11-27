@@ -14,17 +14,17 @@ export class TaskFormContainer extends React.Component {
     api: new TasksApi()
   }
 
-  constructor (props) {
+  constructor(props) {
     super(props)
 
     this.handleSubmit = this.handleSubmit.bind(this)
   }
 
-  handleSubmit (task) {
+  handleSubmit(task) {
     this.props.api.addTask(task).then(res => this.props.onAdd(res.data))
   }
 
-  render () {
+  render() {
     return <TaskForm onSubmit={this.handleSubmit} />
   }
 }

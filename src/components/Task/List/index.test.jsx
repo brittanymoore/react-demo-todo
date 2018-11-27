@@ -4,7 +4,7 @@ import { TaskListContainer } from './index'
 import { TaskList } from './List/List'
 import { TaskFormContainer } from '../Form'
 
-function flushPromises () {
+function flushPromises() {
   return new Promise(resolve => setImmediate(resolve))
 }
 
@@ -48,9 +48,9 @@ describe('TaskListContainer', () => {
     const tasks = [{ id: 'the-task' }]
 
     td.when(api.getTasks()).thenResolve({ data: tasks })
-    td
-      .when(api.updateTask('the-task', { id: 'the-task', complete: true }))
-      .thenResolve({})
+    td.when(
+      api.updateTask('the-task', { id: 'the-task', complete: true })
+    ).thenResolve({})
 
     const subject = shallow(<TaskListContainer api={api} />)
     await flushPromises()

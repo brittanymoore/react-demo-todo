@@ -14,7 +14,7 @@ export class TaskListContainer extends React.Component {
     api: new TasksApi()
   }
 
-  constructor (props) {
+  constructor(props) {
     super(props)
 
     this.state = {
@@ -25,20 +25,20 @@ export class TaskListContainer extends React.Component {
     this.handleToggle = this.handleToggle.bind(this)
   }
 
-  componentDidMount () {
+  componentDidMount() {
     this.props.api.getTasks().then(res => {
       const tasks = res.data
       this.setState({ tasks })
     })
   }
 
-  handleAdd (task) {
+  handleAdd(task) {
     const tasks = this.state.tasks
     tasks.push(task)
     this.setState({ tasks })
   }
 
-  handleToggle (id) {
+  handleToggle(id) {
     const tasks = this.state.tasks
     const task = tasks.find(task => task.id === id)
     task.complete = !task.complete
@@ -48,12 +48,12 @@ export class TaskListContainer extends React.Component {
     })
   }
 
-  render () {
+  render() {
     const { tasks } = this.state
 
     return (
-      <div data-test='task-list'>
-        <TaskList name='My List' tasks={tasks} onToggle={this.handleToggle} />
+      <div data-test="task-list">
+        <TaskList name="My List" tasks={tasks} onToggle={this.handleToggle} />
         <TaskFormContainer onAdd={this.handleAdd} />
       </div>
     )

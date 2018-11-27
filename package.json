@@ -10,8 +10,7 @@
 	},
 	"scripts": {
 		"build": "MODE=production webpack",
-		"format": "prettier-standard '**/*.{js,jsx}' '!node_modules' '!dist'",
-		"lint": "eslint '**/*.{js,jsx}' --config ./config/lint/.eslintrc --ignore-path ./config/lint/.eslintignore --fix",
+		"lint": "eslint '**/*.{js,jsx}' --config ./config/lint/.eslintrc --ignore-path ./config/lint/.eslintignore",
 		"start": "MODE=development webpack-dev-server",
 		"start:server": "node server/server.js",
 		"test": "jest --config=./config/test/jest.config.js",
@@ -23,13 +22,13 @@
 		}
 	},
 	"lint-staged": {
-    "linters": {
-      "**/*.{js,jsx}": [
-        "prettier-standard",
-        "git add"
-      ]
-    }
-  },
+		"linters": {
+			"**/*.{js,jsx}": [
+				"prettier --write --config ./config/format/.prettierrc --ignore-path ./config/format/.prettierignore",
+				"git add"
+			]
+		}
+	},
 	"dependencies": {
 		"axios": "^0.18.0",
 		"path-to-regexp": "^2.4.0",
@@ -55,6 +54,7 @@
 		"enzyme": "^3.3.0",
 		"enzyme-adapter-react-16": "^1.1.1",
 		"eslint": "^5.8.0",
+		"eslint-config-prettier": "^3.3.0",
 		"eslint-plugin-cypress": "^2.1.2",
 		"eslint-plugin-jsx-a11y": "^6.1.2",
 		"eslint-plugin-react": "^7.11.1",
@@ -71,7 +71,7 @@
 		"normalize.css": "^8.0.0",
 		"postcss-loader": "^3.0.0",
 		"postcss-preset-env": "^5.3.0",
-		"prettier-standard": "^8.0.1",
+		"prettier": "^1.15.2",
 		"react-test-renderer": "^16.4.1",
 		"style-loader": "^0.21.0",
 		"testdouble": "^3.8.2",

@@ -5,7 +5,7 @@ const path = require('path')
 const seedFilePath = path.resolve(`${__dirname}/db-seed.json`)
 const dbFilePath = `${__dirname}/db.json`
 
-function checkDatabase () {
+function checkDatabase() {
   if (!fs.existsSync(dbFilePath)) {
     process.stdout.write('Creating db.json using db-seed.json.\n')
     return seedDatabase()
@@ -13,10 +13,9 @@ function checkDatabase () {
   return Promise.resolve()
 }
 
-function seedDatabase () {
+function seedDatabase() {
   return new Promise((resolve, reject) => {
-    fs
-      .createReadStream(seedFilePath)
+    fs.createReadStream(seedFilePath)
       .pipe(fs.createWriteStream(dbFilePath))
       .on('error', err => {
         process.stderr.write(err)

@@ -16,6 +16,6 @@ global.expect = expect
 
 require('testdouble-jest')(td, jest)
 
-afterEach(function () {
+afterEach(function() {
   td.reset()
 })

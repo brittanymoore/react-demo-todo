@@ -9,25 +9,25 @@ export class Task extends React.Component {
     onToggle: PropTypes.func
   }
 
-  constructor (props) {
+  constructor(props) {
     super(props)
 
     this.handleToggle = this.handleToggle.bind(this)
     this.handleKeyup = this.handleKeyup.bind(this)
   }
 
-  handleToggle () {
+  handleToggle() {
     this.props.onToggle(this.props.task.id)
   }
 
-  handleKeyup (event) {
+  handleKeyup(event) {
     if (event.key === 'Enter' || event.key === ' ') {
       event.preventDefault()
       this.handleToggle()
     }
   }
 
-  render () {
+  render() {
     const { task } = this.props
     return (
       <li className={task.complete ? styles['complete'] : ''}>
@@ -35,7 +35,7 @@ export class Task extends React.Component {
         <div className={styles['task-complete']}>
           <span
             onClick={this.handleToggle}
-            role='button'
+            role="button"
             tabIndex={0}
             onKeyUp={this.handleKeyup}
             className={`${styles.icon} material-icons`}

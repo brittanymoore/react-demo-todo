@@ -16,23 +16,23 @@ export class Input extends React.Component {
     value: ''
   }
 
-  constructor (props) {
+  constructor(props) {
     super(props)
 
     this.handleChange = this.handleChange.bind(this)
   }
 
-  handleChange ({ target }) {
+  handleChange({ target }) {
     this.props.onChange(target.name, target.value)
   }
 
-  render () {
+  render() {
     const { name, id, value, children } = this.props
     return (
       <label htmlFor={id}>
         <span className={styles['label-text']}>{children}</span>
         <input
-          type='text'
+          type="text"
           name={name}
           id={id}
           value={value}

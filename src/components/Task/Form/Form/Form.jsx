@@ -10,7 +10,7 @@ export class TaskForm extends React.Component {
     onSubmit: PropTypes.func
   }
 
-  constructor (props) {
+  constructor(props) {
     super(props)
 
     this.state = {
@@ -21,18 +21,18 @@ export class TaskForm extends React.Component {
     this.handleSubmit = this.handleSubmit.bind(this)
   }
 
-  handleChange (name, value) {
+  handleChange(name, value) {
     this.setState({
       [name]: value
     })
   }
 
-  handleSubmit (event) {
+  handleSubmit(event) {
     event.preventDefault()
     this.props.onSubmit(this.state)
   }
 
-  render () {
+  render() {
     const { name } = this.state
 
     return (
@@ -40,18 +40,18 @@ export class TaskForm extends React.Component {
         noValidate
         onSubmit={this.handleSubmit}
         className={styles['task-form']}
-        data-test='task-form'
+        data-test="task-form"
       >
         <Input
-          name='name'
-          id='taskName'
+          name="name"
+          id="taskName"
           value={name}
           onChange={this.handleChange}
         >
           Add a Task
         </Input>
         <button
-          type='submit'
+          type="submit"
           className={styles['add-button']}
           disabled={!(name && name.length > 0)}
         >

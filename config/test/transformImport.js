@@ -5,7 +5,7 @@
  */
 
 module.exports = {
-  process () {
+  process() {
     return 'module.exports = {};'
   }
 }
