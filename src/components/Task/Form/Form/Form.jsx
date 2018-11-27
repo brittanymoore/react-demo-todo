@@ -40,6 +40,7 @@ export class TaskForm extends React.Component {
         noValidate
         onSubmit={this.handleSubmit}
         className={styles['task-form']}
+        data-test="task-form"
       >
         <Input
           name="name"
