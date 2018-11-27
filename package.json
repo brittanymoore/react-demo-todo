@@ -4,7 +4,7 @@
 	"description": "",
 	"scripts": {
 		"build": "MODE=production webpack",
-		"format": "prettier-standard 'src/**/*.jsx' 'config/**/*.js' 'server/**/*.js'",
+		"format": "prettier-standard 'src/**/*.{js,jsx}' '!node_modules'",
 		"lint": "eslint '**/*.{js,jsx}' --config ./config/lint/.eslintrc --ignore-path ./config/lint/.eslintignore --fix",
 		"start": "MODE=development webpack-dev-server",
 		"start:prod": "MODE=production webpack-dev-server",

@@ -54,7 +54,6 @@
     "react/no-is-mounted": "error",
     "react/jsx-uses-vars": ["error"],
     "react/prop-types": ["error"],
-    "jsx-quotes": ["error", "prefer-double"],
     "jsx-a11y/alt-text": "error",
     "jsx-a11y/img-redundant-alt": "error",
     "jsx-a11y/aria-role": "error",
