@@ -40,12 +40,12 @@ npm run start
 npm run test:e2e
 ```
 
-### Linting
-
-Run the script `npm run lint` to lint the code using `eslint`. Anything that can be auto-fixed will be handled automatically using the `--fix` flag.
-
-The current configuration, which can be found in `config/lint`, uses a combination of `jsx-a11y` and `react` rules, as well as a `prettier` config to reduce overlap with the formatter.
-
 ### Precommit Formatting
 
-This repository uses `husky`, `lint-staged`, and `prettier-standard` to auto-format code prior to each commit.
+This repository uses `husky`, `lint-staged`, and `prettier` to auto-format code on commit.
+
+### Linting
+
+Run the script `npm run lint` to lint the code using `eslint`.
+
+The current configuration, which can be found in `config/lint`, uses a combination of `jsx-a11y` and `react` rules. `eslint-config-prettier` is included to disable any rules that prettier already handles.
