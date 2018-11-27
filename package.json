@@ -10,7 +10,7 @@
 	},
 	"scripts": {
 		"build": "MODE=production webpack",
-		"lint": "eslint '**/*.{js,jsx}' --config ./config/lint/.eslintrc --ignore-path ./config/lint/.eslintignore",
+		"lint": "eslint '**/*.{js,jsx}' --config ./config/lint/.eslintrc --ignore-path .gitignore",
 		"start": "MODE=development webpack-dev-server",
 		"start:server": "node server/server.js",
 		"test": "jest --config=./config/test/jest.config.js",
@@ -24,7 +24,7 @@
 	"lint-staged": {
 		"linters": {
 			"**/*.{js,jsx}": [
-				"prettier --write --config ./config/format/.prettierrc --ignore-path ./config/format/.prettierignore",
+				"prettier --write --config ./config/format/.prettierrc --ignore-path .gitignore",
 				"git add"
 			]
 		}
