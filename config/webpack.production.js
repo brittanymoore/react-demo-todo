@@ -2,6 +2,8 @@ const path = require('path')
 const webpack = require('webpack')
 const webpackMerge = require('webpack-merge')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
+const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin')
+const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
 const commonConfig = require('./webpack.common')
 
 module.exports = webpackMerge(commonConfig, {
@@ -27,7 +29,7 @@ module.exports = webpackMerge(commonConfig, {
           'css-loader',
           {
             loader: 'postcss-loader',
-            options: { config: { path: './config/postcss/production/' } }
+            options: { config: { path: './config/postcss/' } }
           }
         ],
         include: [/src\/styles.css/],
@@ -46,7 +48,7 @@ module.exports = webpackMerge(commonConfig, {
           },
           {
             loader: 'postcss-loader',
-            options: { config: { path: './config/postcss/production/' } }
+            options: { config: { path: './config/postcss/' } }
           }
         ],
         exclude: [/node_modules/, /src\/styles.css/]
@@ -68,6 +70,14 @@ module.exports = webpackMerge(commonConfig, {
   ],
 
   optimization: {
+    minimizer: [
+      new UglifyJsPlugin({
+        cache: true,
+        parallel: true,
+        sourceMap: true
+      }),
+      new OptimizeCSSAssetsPlugin({})
+    ],
     runtimeChunk: 'single',
     splitChunks: {
       cacheGroups: {
