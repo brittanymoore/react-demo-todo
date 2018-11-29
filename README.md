@@ -7,10 +7,10 @@
 ```sh
 git clone https://github.com/brittanymoore/react-demo-todo.git
 cd react-demo-todo
-npm install
+npm run setup
 ```
 
-### Launch the App
+### Run the Application
 
 To run the app in development mode:
 
@@ -22,9 +22,7 @@ npm run start
 
 Open a browser window and navigate to localhost:3000.
 
-## Other Features
-
-### Testing
+### Unit Testing
 
 To run unit tests using Jest and Enzyme: 
 
@@ -32,10 +30,17 @@ To run unit tests using Jest and Enzyme:
 npm run test
 ```
 
+## Root-level Features
+
+This seed project is set up at two levels: the root, which contains project-wide tooling, and the `app` directory, which contains the React application. I've structured it this way to reflect the variance of React projects I've encountered in the wild. You might only be interested in the React application (the `app` directory); the extra tooling is optional.
+
+### End-to-End Testing
+
 To run end-to-end tests using Cypress:
 
 ```sh
 # in separate shell terminals
+npm run start:server
 npm run start
 npm run test:e2e
 ```
