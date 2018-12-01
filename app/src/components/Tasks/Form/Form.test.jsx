@@ -1,6 +1,7 @@
 import React from 'react'
 import { shallow } from 'enzyme'
 import { TasksForm } from '.'
+import { Form } from '../../UI/Form'
 import { Input } from '../../UI/Input'
 
 describe('TasksForm', () => {
@@ -12,9 +13,7 @@ describe('TasksForm', () => {
     const handleSubmit = td.func()
     const subject = shallow(<TasksForm onSubmit={handleSubmit} />)
 
-    subject.find('form').simulate('submit', {
-      preventDefault: td.func()
-    })
+    subject.find(Form).simulate('submit')
 
     td.verify(handleSubmit())
   })
