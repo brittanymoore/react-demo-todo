@@ -6,7 +6,7 @@
 	"scripts": {
 		"build": "MODE=production webpack",
 		"start": "MODE=development webpack-dev-server",
-		"test": "jest --config=./config/test/jest.config.js"
+		"test": "jest --config=./config/jest/jest.config.js"
 	},
 	"keywords": [],
 	"author": "Brittany <moore.brittanyann@gmail.com>",

@@ -9,7 +9,7 @@
 		"url": "git+https://github.com/brittanymoore/react-demo-todo.git"
 	},
 	"scripts": {
-		"lint": "eslint '**/*.{js,jsx}' --config ./config/lint/.eslintrc --ignore-path .gitignore",
+		"lint": "eslint '**/*.{js,jsx}' --config ./tools/eslint/.eslintrc --ignore-path .gitignore",
 		"setup": "npm install && npm run setup:app && npm run setup:server",
 		"setup:app": "cd app && npm install",
 		"setup:server": "cd server && npm install",
@@ -26,7 +26,7 @@
 	"lint-staged": {
 		"linters": {
 			"**/*.{js,jsx}": [
-				"prettier --write --config ./config/format/.prettierrc --ignore-path .gitignore",
+				"prettier --write --config ./tools/prettier/.prettierrc --ignore-path .gitignore",
 				"git add"
 			]
 		}

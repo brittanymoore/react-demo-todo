@@ -5,7 +5,7 @@
 module.exports = {
   rootDir: '../../',
 
-  setupTestFrameworkScriptFile: '<rootDir>/config/test/setup.js',
+  setupTestFrameworkScriptFile: '<rootDir>/config/jest/setup.js',
 
   // exclude App and index from coverage, since they contain no business logic.
   collectCoverageFrom: ['src/**/*.{js,jsx}', '!src/index.jsx', '!src/App.jsx'],
@@ -25,9 +25,9 @@ module.exports = {
     // handle babel language features in components
     '^.+\\.(js|jsx|mjs)$': '<rootDir>/node_modules/babel-jest',
     // ignore css and other file imports
-    '^.+\\.css$': '<rootDir>/config/test/transformImport.js',
+    '^.+\\.css$': '<rootDir>/config/jest/transformImport.js',
     '^(?!.*\\.(js|jsx|mjs|css|json)$)':
-      '<rootDir>/config/test/transformImport.js'
+      '<rootDir>/config/jest/transformImport.js'
   },
 
   transformIgnorePatterns: ['[/\\\\]node_modules[/\\\\].+\\.(js|jsx|mjs)$']
