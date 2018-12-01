@@ -1,7 +1,7 @@
 import React from 'react'
 import { shallow } from 'enzyme'
 import { TaskList } from './List'
-import { Task } from '../../Task/Task'
+import { TaskListItem } from '../../ListItem/ListItem'
 
 describe('TaskList', () => {
   it('shallow renders without crashing', () => {
@@ -22,6 +22,6 @@ describe('TaskList', () => {
     ]
     const subject = shallow(<TaskList tasks={tasks} />)
 
-    expect(subject.find(Task).length).toBe(2)
+    expect(subject.find(TaskListItem).length).toBe(2)
   })
 })

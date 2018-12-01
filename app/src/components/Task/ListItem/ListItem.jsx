@@ -1,9 +1,9 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-import styles from './Task.css'
+import styles from './ListItem.css'
 
-export class Task extends React.Component {
+export class TaskListItem extends React.Component {
   static propTypes = {
     task: PropTypes.object.isRequired,
     onToggle: PropTypes.func

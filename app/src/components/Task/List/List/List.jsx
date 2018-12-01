@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-import { Task } from '../../Task/Task'
+import { TaskListItem } from '../../ListItem/ListItem'
 
 import styles from './List.css'
 
@@ -11,7 +11,7 @@ const TaskList = ({ name, tasks, onToggle }) => (
 
     <ul className={styles['todo-list']}>
       {tasks.map(task => (
-        <Task key={task.id} task={task} onToggle={onToggle} />
+        <TaskListItem key={task.id} task={task} onToggle={onToggle} />
       ))}
     </ul>
   </div>
