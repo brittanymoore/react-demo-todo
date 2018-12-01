@@ -33,9 +33,11 @@ export class TasksListContainer extends React.Component {
   }
 
   handleAdd(task) {
-    const tasks = this.state.tasks
-    tasks.push(task)
-    this.setState({ tasks })
+    this.props.api.addTask(task).then(res => {
+      const tasks = this.state.tasks
+      tasks.push(res.data)
+      this.setState({ tasks })
+    })
   }
 
   handleToggle(id) {

@@ -37,10 +37,17 @@ describe('TasksListContainer', () => {
 
     const subject = shallow(<TasksListContainer api={api} />)
     await flushPromises()
+
+    td.when(api.addTask({ id: 'new-task' })).thenResolve({
+      data: { id: 'added-task' }
+    })
+
     subject.find(TasksFormContainer).simulate('add', { id: 'new-task' })
     await flushPromises()
 
-    expect(subject.find(TasksList).props().tasks).toEqual([{ id: 'new-task' }])
+    expect(subject.find(TasksList).props().tasks).toEqual([
+      { id: 'added-task' }
+    ])
   })
 
   it('should toggle task completion', async () => {
