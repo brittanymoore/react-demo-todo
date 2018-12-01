@@ -16,31 +16,26 @@ describe('TasksForm', () => {
       preventDefault: td.func()
     })
 
-    td.verify(
-      handleSubmit({
-        name: ''
-      })
-    )
+    td.verify(handleSubmit())
   })
 
-  it('should update name on change', () => {
-    const subject = shallow(<TasksForm />)
+  it('should wire up change handler', () => {
+    const handleChange = td.func()
+    const subject = shallow(<TasksForm onChange={handleChange} />)
 
     subject.find(Input).simulate('change', 'name', 'string')
 
-    expect(subject.find(Input).props().value).toBe('string')
+    td.verify(handleChange('name', 'string'))
   })
 
-  it('should disable button when name is empty', () => {
-    const subject = shallow(<TasksForm />)
+  it('should disable button when form is invalid', () => {
+    const subject = shallow(<TasksForm isValid={false} />)
 
     expect(subject.find('button').props().disabled).toBe(true)
   })
 
-  it('should enable button when name is non-empty', () => {
-    const subject = shallow(<TasksForm />)
-
-    subject.find(Input).simulate('change', 'name', 'string')
+  it('should enable button when form is valid', () => {
+    const subject = shallow(<TasksForm isValid />)
 
     expect(subject.find('button').props().disabled).toBe(false)
   })

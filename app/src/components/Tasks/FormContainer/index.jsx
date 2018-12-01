@@ -11,14 +11,34 @@ export class TasksFormContainer extends React.Component {
   constructor(props) {
     super(props)
 
+    this.state = {
+      name: ''
+    }
+
+    this.handleChange = this.handleChange.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
   }
 
-  handleSubmit(task) {
-    this.props.onAdd(task)
+  handleChange(property, value) {
+    this.setState({
+      [property]: value
+    })
+  }
+
+  handleSubmit() {
+    this.props.onAdd(this.state)
   }
 
   render() {
-    return <TasksForm onSubmit={this.handleSubmit} />
+    const { name } = this.state
+
+    return (
+      <TasksForm
+        name={name}
+        isValid={!!name}
+        onChange={this.handleChange}
+        onSubmit={this.handleSubmit}
+      />
+    )
   }
 }
