@@ -20,7 +20,7 @@ module.exports = webpackMerge(commonConfig, {
         test: /\.css$/,
         use: [MiniCssExtractPlugin.loader, 'css-loader'],
         include: [/node_modules/],
-        exclude: [/src\/styles.css/]
+        exclude: [/src\/global.css/]
       },
       {
         test: /\.css$/,
@@ -32,7 +32,7 @@ module.exports = webpackMerge(commonConfig, {
             options: { config: { path: './config/postcss/' } }
           }
         ],
-        include: [/src\/styles.css/],
+        include: [/src\/global.css/],
         exclude: [/node_modules/]
       },
       {
@@ -51,7 +51,7 @@ module.exports = webpackMerge(commonConfig, {
             options: { config: { path: './config/postcss/' } }
           }
         ],
-        exclude: [/node_modules/, /src\/styles.css/]
+        exclude: [/node_modules/, /src\/global.css/]
       }
     ]
   },
