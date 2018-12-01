@@ -2,10 +2,9 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { TasksApi } from '../../../api/tasks'
 
-import { TasksList } from '../List'
-import { TasksFormContainer } from '../FormContainer'
+import { TasksPanel } from '../Panel'
 
-export class TasksListContainer extends React.Component {
+export class TasksPanelContainer extends React.Component {
   static propTypes = {
     api: PropTypes.any
   }
@@ -54,10 +53,11 @@ export class TasksListContainer extends React.Component {
     const { tasks } = this.state
 
     return (
-      <div data-test="task-list">
-        <TasksList name="My List" tasks={tasks} onToggle={this.handleToggle} />
-        <TasksFormContainer onAdd={this.handleAdd} />
-      </div>
+      <TasksPanel
+        tasks={tasks}
+        onToggle={this.handleToggle}
+        onAdd={this.handleAdd}
+      />
     )
   }
 }

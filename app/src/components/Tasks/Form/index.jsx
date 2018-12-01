@@ -7,11 +7,7 @@ import { Input } from '../../UI/Input'
 import styles from './Form.css'
 
 const TasksForm = ({ name, isValid, onChange, onSubmit }) => (
-  <Form
-    onSubmit={onSubmit}
-    className={styles['task-form']}
-    data-test="task-form"
-  >
+  <Form onSubmit={onSubmit} className={styles['task-form']}>
     <Input name="name" id="taskName" value={name} onChange={onChange}>
       Add a Task
     </Input>

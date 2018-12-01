@@ -1,9 +1,5 @@
 .todo-list-container {
 	border-radius: 4px;
-	margin: 20px auto 0;
-	width: auto;
-	max-width: 400px;
-	min-width: 300px;
 }
 
 .todo-list-container > h2 {
