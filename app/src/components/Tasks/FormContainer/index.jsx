@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-import { TasksForm } from '../Form/Form'
+import { TasksForm } from '../Form'
 
 export class TasksFormContainer extends React.Component {
   static propTypes = {

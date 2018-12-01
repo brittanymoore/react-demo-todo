@@ -1,7 +1,7 @@
 import React from 'react'
 import { shallow } from 'enzyme'
 import { TasksFormContainer } from '.'
-import { TasksForm } from '../Form/Form'
+import { TasksForm } from '../Form'
 
 describe('TaskFormContainer', () => {
   it('shallow renders without crashing', () => {

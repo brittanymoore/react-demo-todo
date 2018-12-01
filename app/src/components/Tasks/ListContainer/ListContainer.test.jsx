@@ -1,7 +1,7 @@
 import React from 'react'
 import { shallow } from 'enzyme'
 import { TasksListContainer } from '.'
-import { TasksList } from '../List/List'
+import { TasksList } from '../List'
 import { TasksFormContainer } from '../FormContainer'
 
 function flushPromises() {
