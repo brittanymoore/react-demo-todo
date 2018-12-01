@@ -1,8 +1,8 @@
 import React from 'react'
 import { shallow } from 'enzyme'
-import { TasksListContainer } from './index'
-import { TasksList } from './List/List'
-import { TasksFormContainer } from '../Form'
+import { TasksListContainer } from '.'
+import { TasksList } from '../List/List'
+import { TasksFormContainer } from '../FormContainer'
 
 function flushPromises() {
   return new Promise(resolve => setImmediate(resolve))

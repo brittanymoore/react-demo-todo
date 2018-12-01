@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-import { Input } from '../../../UI/Input/Input'
+import { Input } from '../../UI/Input/Input'
 
 import styles from './Form.css'
 

@@ -2,8 +2,8 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { TasksApi } from '../../../api/tasks'
 
-import { TasksList } from './List/List'
-import { TasksFormContainer } from './../Form'
+import { TasksList } from '../List/List'
+import { TasksFormContainer } from '../FormContainer'
 
 export class TasksListContainer extends React.Component {
   static propTypes = {

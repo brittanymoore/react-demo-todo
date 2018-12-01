@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-import { TasksListItem } from '../../ListItem/ListItem'
+import { TasksListItem } from '../ListItem/ListItem'
 
 import styles from './List.css'
 
