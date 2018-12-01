@@ -1,5 +1,5 @@
 import React from 'react'
 
-import { TaskListContainer } from '../components/Task/List'
+import { TasksListContainer } from '../components/Tasks/List'
 
-export const ScreensTasks = () => <TaskListContainer />
+export const ScreensTasks = () => <TasksListContainer />

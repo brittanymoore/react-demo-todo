@@ -2,9 +2,9 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { TasksApi } from '../../../api/tasks'
 
-import { TaskForm } from './Form/Form'
+import { TasksForm } from './Form/Form'
 
-export class TaskFormContainer extends React.Component {
+export class TasksFormContainer extends React.Component {
   static propTypes = {
     onAdd: PropTypes.func,
     api: PropTypes.any
@@ -25,6 +25,6 @@ export class TaskFormContainer extends React.Component {
   }
 
   render() {
-    return <TaskForm onSubmit={this.handleSubmit} />
+    return <TasksForm onSubmit={this.handleSubmit} />
   }
 }

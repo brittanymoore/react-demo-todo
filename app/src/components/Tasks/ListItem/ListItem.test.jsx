@@ -1,10 +1,10 @@
 import React from 'react'
 import { shallow } from 'enzyme'
-import { TaskListItem } from './ListItem'
+import { TasksListItem } from './ListItem'
 
-describe('TaskListItem', () => {
+describe('TasksListItem', () => {
   it('shallow renders without crashing', () => {
-    shallow(<TaskListItem task={{}} />)
+    shallow(<TasksListItem task={{}} />)
   })
 
   it('should add class if complete', () => {
@@ -12,7 +12,7 @@ describe('TaskListItem', () => {
       id: 'the-task',
       complete: true
     }
-    const subject = shallow(<TaskListItem task={task} />)
+    const subject = shallow(<TasksListItem task={task} />)
 
     expect(subject.find('li').hasClass('complete')).toBe(true)
   })
@@ -22,7 +22,7 @@ describe('TaskListItem', () => {
       id: 'the-task',
       complete: false
     }
-    const subject = shallow(<TaskListItem task={task} />)
+    const subject = shallow(<TasksListItem task={task} />)
 
     expect(subject.find('li').hasClass('complete')).toBe(false)
   })
@@ -33,7 +33,7 @@ describe('TaskListItem', () => {
       id: 'the-task'
     }
     const subject = shallow(
-      <TaskListItem task={task} onToggle={handleToggle} />
+      <TasksListItem task={task} onToggle={handleToggle} />
     )
 
     subject.find('span').simulate('click')
@@ -47,7 +47,7 @@ describe('TaskListItem', () => {
       id: 'the-task'
     }
     const subject = shallow(
-      <TaskListItem task={task} onToggle={handleToggle} />
+      <TasksListItem task={task} onToggle={handleToggle} />
     )
 
     subject.find('span').simulate('keyup', {
@@ -64,7 +64,7 @@ describe('TaskListItem', () => {
       id: 'the-task'
     }
     const subject = shallow(
-      <TaskListItem task={task} onToggle={handleToggle} />
+      <TasksListItem task={task} onToggle={handleToggle} />
     )
 
     subject.find('span').simulate('keyup', {

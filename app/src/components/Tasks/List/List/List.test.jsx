@@ -1,16 +1,16 @@
 import React from 'react'
 import { shallow } from 'enzyme'
-import { TaskList } from './List'
-import { TaskListItem } from '../../ListItem/ListItem'
+import { TasksList } from './List'
+import { TasksListItem } from '../../ListItem/ListItem'
 
-describe('TaskList', () => {
+describe('TasksList', () => {
   it('shallow renders without crashing', () => {
-    shallow(<TaskList />)
+    shallow(<TasksList />)
   })
 
   it('should render name', () => {
     const name = 'My List'
-    const subject = shallow(<TaskList name={name} />)
+    const subject = shallow(<TasksList name={name} />)
 
     expect(subject.find('h2').props().children).toBe('My List')
   })
@@ -20,8 +20,8 @@ describe('TaskList', () => {
       { id: 'a-task', name: 'A Task' },
       { id: 'another-task', name: 'Another Task' }
     ]
-    const subject = shallow(<TaskList tasks={tasks} />)
+    const subject = shallow(<TasksList tasks={tasks} />)
 
-    expect(subject.find(TaskListItem).length).toBe(2)
+    expect(subject.find(TasksListItem).length).toBe(2)
   })
 })

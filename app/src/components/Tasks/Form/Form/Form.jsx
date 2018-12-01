@@ -5,7 +5,7 @@ import { Input } from '../../../UI/Input/Input'
 
 import styles from './Form.css'
 
-export class TaskForm extends React.Component {
+export class TasksForm extends React.Component {
   static propTypes = {
     onSubmit: PropTypes.func
   }
