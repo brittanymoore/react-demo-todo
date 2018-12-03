@@ -7,14 +7,16 @@ export class TasksApi {
   }
 
   addTask(task) {
-    return this.client.post(`${this.apiUrl}/tasks`, task)
+    return this.client.post(`${this.apiUrl}/tasks`, task).then(res => res.data)
   }
 
-  updateTask(id, task) {
-    return this.client.put(`${this.apiUrl}/tasks/${id}`, task)
+  updateTask(task) {
+    return this.client
+      .put(`${this.apiUrl}/tasks/${task.id}`, task)
+      .then(res => res.data)
   }
 
   getTasks() {
-    return this.client.get(`${this.apiUrl}/tasks`)
+    return this.client.get(`${this.apiUrl}/tasks`).then(res => res.data)
   }
 }

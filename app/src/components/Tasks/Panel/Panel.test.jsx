@@ -4,72 +4,30 @@ import { TasksPanel } from '.'
 import { TasksList } from '../List'
 import { TasksFormContainer } from '../Form'
 
-function flushPromises() {
-  return new Promise(resolve => setImmediate(resolve))
-}
-
 describe('TasksPanel', () => {
   it('shallow renders without crashing', async () => {
-    const api = td.object(['getTasks'])
-    td.when(api.getTasks()).thenResolve({ data: [] })
-
-    await flushPromises()
-
-    shallow(<TasksPanel api={api} />)
-  })
-
-  it('should get tasks', async () => {
-    const api = td.object(['getTasks'])
-    const tasks = [{ id: 'the-task' }]
-    td.when(api.getTasks()).thenResolve({ data: tasks })
-
-    const subject = shallow(<TasksPanel api={api} />)
-    await flushPromises()
-
-    expect(subject.find(TasksList).props().tasks).toEqual(tasks)
+    shallow(<TasksPanel />)
   })
 
   it('should add a task', async () => {
-    const api = td.object(['getTasks', 'addTask'])
+    const addTask = td.func()
     const tasks = []
-
-    td.when(api.getTasks()).thenResolve({ data: tasks })
-
-    const subject = shallow(<TasksPanel api={api} />)
-    await flushPromises()
-
-    td.when(api.addTask({ id: 'new-task' })).thenResolve({
-      data: { id: 'added-task' }
-    })
+    const subject = shallow(<TasksPanel tasks={tasks} addTask={addTask} />)
 
     subject.find(TasksFormContainer).simulate('add', { id: 'new-task' })
-    await flushPromises()
 
-    expect(subject.find(TasksList).props().tasks).toEqual([
-      { id: 'added-task' }
-    ])
+    td.verify(addTask({ id: 'new-task' }))
   })
 
   it('should toggle task completion', async () => {
-    const api = td.object(['getTasks', 'updateTask'])
+    const updateTask = td.func()
     const tasks = [{ id: 'the-task' }]
-
-    td.when(api.getTasks()).thenResolve({ data: tasks })
-    td.when(
-      api.updateTask('the-task', { id: 'the-task', complete: true })
-    ).thenResolve({})
-
-    const subject = shallow(<TasksPanel api={api} />)
-    await flushPromises()
+    const subject = shallow(
+      <TasksPanel tasks={tasks} updateTask={updateTask} />
+    )
 
     subject.find(TasksList).simulate('toggle', 'the-task')
-    await flushPromises()
 
-    expect(subject.find(TasksList).props().tasks).toEqual([
-      {
-        id: 'the-task',
-        complete: true
-      }
-    ])
+    td.verify(updateTask({ id: 'the-task', complete: true }))
   })
 })

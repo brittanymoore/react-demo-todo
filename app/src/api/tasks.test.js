@@ -6,7 +6,7 @@ describe('TasksApi', () => {
     const apiUrl = '/api'
     const subject = new TasksApi({ client, apiUrl })
 
-    td.when(client.post('/api/tasks', 'task')).thenResolve('added')
+    td.when(client.post('/api/tasks', 'task')).thenResolve({ data: 'added' })
 
     return subject.addTask('task').then(res => expect(res).toBe('added'))
   })
@@ -16,10 +16,12 @@ describe('TasksApi', () => {
     const apiUrl = '/api'
     const subject = new TasksApi({ client, apiUrl })
 
-    td.when(client.put('/api/tasks/id', 'task')).thenResolve('updated')
+    td.when(client.put('/api/tasks/the-task', { id: 'the-task' })).thenResolve({
+      data: 'updated'
+    })
 
     return subject
-      .updateTask('id', 'task')
+      .updateTask({ id: 'the-task' })
       .then(res => expect(res).toBe('updated'))
   })
 
@@ -28,7 +30,7 @@ describe('TasksApi', () => {
     const apiUrl = '/api'
     const subject = new TasksApi({ client, apiUrl })
 
-    td.when(client.get('/api/tasks')).thenResolve('tasks')
+    td.when(client.get('/api/tasks')).thenResolve({ data: 'tasks' })
 
     return subject.getTasks().then(res => expect(res).toBe('tasks'))
   })
