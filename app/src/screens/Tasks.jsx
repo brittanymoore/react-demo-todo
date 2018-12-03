@@ -1,5 +1,5 @@
 import React from 'react'
 
-import { TasksPanelContainer } from '../components/Tasks/PanelContainer'
+import { TasksPanel } from '../components/Tasks/Panel'
 
-export const ScreensTasks = () => <TasksPanelContainer />
+export const ScreensTasks = () => <TasksPanel />

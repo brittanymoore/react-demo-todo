@@ -1,17 +1,17 @@
 import React from 'react'
 import { shallow } from 'enzyme'
-import { TasksForm } from '.'
-import { Form } from '../../UI/Form'
-import { Input } from '../../UI/Input'
+import { TasksFormView } from '.'
+import { Form } from '../../../UI/Form'
+import { Input } from '../../../UI/Input'
 
-describe('TasksForm', () => {
+describe('TasksFormView', () => {
   it('shallow renders without crashing', () => {
-    shallow(<TasksForm />)
+    shallow(<TasksFormView />)
   })
 
   it('should wire up form submit handler', () => {
     const handleSubmit = td.func()
-    const subject = shallow(<TasksForm onSubmit={handleSubmit} />)
+    const subject = shallow(<TasksFormView onSubmit={handleSubmit} />)
 
     subject.find(Form).simulate('submit')
 
@@ -20,7 +20,7 @@ describe('TasksForm', () => {
 
   it('should wire up change handler', () => {
     const handleChange = td.func()
-    const subject = shallow(<TasksForm onChange={handleChange} />)
+    const subject = shallow(<TasksFormView onChange={handleChange} />)
 
     subject.find(Input).simulate('change', 'name', 'string')
 
@@ -28,13 +28,13 @@ describe('TasksForm', () => {
   })
 
   it('should disable button when form is invalid', () => {
-    const subject = shallow(<TasksForm isValid={false} />)
+    const subject = shallow(<TasksFormView isValid={false} />)
 
     expect(subject.find('button').props().disabled).toBe(true)
   })
 
   it('should enable button when form is valid', () => {
-    const subject = shallow(<TasksForm isValid />)
+    const subject = shallow(<TasksFormView isValid />)
 
     expect(subject.find('button').props().disabled).toBe(false)
   })

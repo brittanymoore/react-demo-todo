@@ -1,27 +1,44 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-import { Form } from '../../UI/Form'
-import { Input } from '../../UI/Input'
+import { TasksFormView } from './View'
 
-import styles from './Form.css'
+export class TasksFormContainer extends React.Component {
+  static propTypes = {
+    onAdd: PropTypes.func
+  }
 
-const TasksForm = ({ name, isValid, onChange, onSubmit }) => (
-  <Form onSubmit={onSubmit} className={styles['task-form']}>
-    <Input name="name" id="taskName" value={name} onChange={onChange}>
-      Add a Task
-    </Input>
-    <button type="submit" className={styles['add-button']} disabled={!isValid}>
-      Add
-    </button>
-  </Form>
-)
+  constructor(props) {
+    super(props)
 
-TasksForm.propTypes = {
-  name: PropTypes.string,
-  isValid: PropTypes.bool,
-  onChange: PropTypes.func,
-  onSubmit: PropTypes.func
+    this.state = {
+      name: ''
+    }
+
+    this.handleChange = this.handleChange.bind(this)
+    this.handleSubmit = this.handleSubmit.bind(this)
+  }
+
+  handleChange(property, value) {
+    this.setState({
+      [property]: value
+    })
+  }
+
+  handleSubmit() {
+    this.props.onAdd(this.state)
+  }
+
+  render() {
+    const { name } = this.state
+
+    return (
+      <TasksFormView
+        name={name}
+        isValid={!!name}
+        onChange={this.handleChange}
+        onSubmit={this.handleSubmit}
+      />
+    )
+  }
 }
-
-export { TasksForm }
