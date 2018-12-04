@@ -6,6 +6,8 @@ const commonConfig = require('./webpack.common')
 module.exports = webpackMerge(commonConfig, {
   mode: 'development',
 
+  devtool: 'cheap-module-source-map',
+
   output: {
     path: path.resolve(__dirname, './../dev')
   },
