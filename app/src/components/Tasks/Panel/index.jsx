@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
-import * as actions from '../../../actions/tasks'
+import * as actions from '../../../state/actions/tasks'
 
 import styles from './Panel.css'
 

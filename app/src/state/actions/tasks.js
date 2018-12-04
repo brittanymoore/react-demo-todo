@@ -1,5 +1,5 @@
 import * as types from './action-types'
-import { TasksApi } from '../api/tasks'
+import { TasksApi } from '../../api/tasks'
 
 const api = new TasksApi()
 
