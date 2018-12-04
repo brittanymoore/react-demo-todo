@@ -6,13 +6,15 @@ import { TasksFormContainer } from '../Form'
 
 describe('TasksPanel', () => {
   it('shallow renders without crashing', async () => {
-    shallow(<TasksPanel />)
+    shallow(<TasksPanel.WrappedComponent />)
   })
 
   it('should add a task', async () => {
     const addTask = td.func()
     const tasks = []
-    const subject = shallow(<TasksPanel tasks={tasks} addTask={addTask} />)
+    const subject = shallow(
+      <TasksPanel.WrappedComponent tasks={tasks} addTask={addTask} />
+    )
 
     subject.find(TasksFormContainer).simulate('add', { id: 'new-task' })
 
@@ -23,7 +25,7 @@ describe('TasksPanel', () => {
     const updateTask = td.func()
     const tasks = [{ id: 'the-task' }]
     const subject = shallow(
-      <TasksPanel tasks={tasks} updateTask={updateTask} />
+      <TasksPanel.WrappedComponent tasks={tasks} updateTask={updateTask} />
     )
 
     subject.find(TasksList).simulate('toggle', 'the-task')

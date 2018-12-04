@@ -69,8 +69,8 @@ const mapDispatchToProps = dispatch => {
   }
 }
 
-export { TasksPanel }
-export default connect(
+const withHandlers = connect(
   mapStateToProps,
   mapDispatchToProps
 )(TasksPanel)
+export { withHandlers as TasksPanel }
