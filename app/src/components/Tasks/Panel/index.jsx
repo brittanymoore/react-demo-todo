@@ -18,30 +18,22 @@ class TasksPanel extends React.Component {
   constructor(props) {
     super(props)
 
-    this.state = {
-      tasks: props.tasks
-    }
-
     this.handleToggle = this.handleToggle.bind(this)
   }
 
-  UNSAFE_componentWillReceiveProps(nextProps) {
-    this.setState({
-      tasks: nextProps.tasks
-    })
-  }
-
   handleToggle(id) {
-    const tasks = this.state.tasks
+    const tasks = this.props.tasks
     const task = tasks.find(task => task.id === id)
-    task.complete = !task.complete
 
-    this.props.updateTask(task)
+    if (task) {
+      const updatedTask = Object.assign({}, task)
+      updatedTask.complete = !updatedTask.complete
+      this.props.updateTask(updatedTask)
+    }
   }
 
   render() {
-    const { tasks } = this.state
-    const { addTask } = this.props
+    const { addTask, tasks } = this.props
 
     return (
       <div data-test="task-list" className={styles.panel}>
