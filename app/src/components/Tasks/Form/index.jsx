@@ -1,11 +1,13 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import { connect } from 'react-redux'
+import * as actions from '../../../state/actions/tasks'
 
 import { TasksFormView } from './View'
 
-export class TasksFormContainer extends React.Component {
+class TasksFormContainer extends React.Component {
   static propTypes = {
-    onAdd: PropTypes.func
+    addTask: PropTypes.func
   }
 
   constructor(props) {
@@ -26,7 +28,7 @@ export class TasksFormContainer extends React.Component {
   }
 
   handleSubmit() {
-    this.props.onAdd(this.state)
+    this.props.addTask(this.state)
   }
 
   render() {
@@ -42,3 +44,21 @@ export class TasksFormContainer extends React.Component {
     )
   }
 }
+
+function mapStateToProps() {
+  return {}
+}
+
+function mapDispatchToProps(dispatch) {
+  return {
+    addTask: task => {
+      return dispatch(actions.addTask(task))
+    }
+  }
+}
+
+const withHandlers = connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(TasksFormContainer)
+export { withHandlers as TasksFormContainer }

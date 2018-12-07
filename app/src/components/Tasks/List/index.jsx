@@ -1,30 +1,60 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import { connect } from 'react-redux'
+import * as actions from '../../../state/actions/tasks'
 
-import { TasksListItem } from '../ListItem'
+import { TasksListView } from './View'
 
-import styles from './List.css'
+class TasksListContainer extends React.Component {
+  static propTypes = {
+    tasks: PropTypes.array,
+    updateTask: PropTypes.func
+  }
 
-const TasksList = ({ name, tasks, onToggle }) => (
-  <div className={styles['todo-list-container']}>
-    <h2>{name}</h2>
+  constructor(props) {
+    super(props)
 
-    <ul className={styles['todo-list']}>
-      {tasks.map(task => (
-        <TasksListItem key={task.id} task={task} onToggle={onToggle} />
-      ))}
-    </ul>
-  </div>
-)
+    this.handleToggle = this.handleToggle.bind(this)
+  }
 
-TasksList.propTypes = {
-  name: PropTypes.string,
-  tasks: PropTypes.arrayOf(PropTypes.object),
-  onToggle: PropTypes.func
+  handleToggle(id) {
+    const tasks = this.props.tasks
+    const task = tasks.find(task => task.id === id)
+
+    if (task) {
+      const updatedTask = Object.assign({}, task)
+      updatedTask.complete = !updatedTask.complete
+      this.props.updateTask(updatedTask)
+    }
+  }
+
+  render() {
+    return (
+      <TasksListView
+        name="My List"
+        tasks={this.props.tasks}
+        onToggle={this.handleToggle}
+      />
+    )
+  }
 }
 
-TasksList.defaultProps = {
-  tasks: []
+function mapStateToProps(state) {
+  return {
+    tasks: state.tasks
+  }
 }
 
-export { TasksList }
+function mapDispatchToProps(dispatch) {
+  return {
+    updateTask: task => {
+      return dispatch(actions.updateTask(task))
+    }
+  }
+}
+
+const withHandlers = connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(TasksListContainer)
+export { withHandlers as TasksListContainer }

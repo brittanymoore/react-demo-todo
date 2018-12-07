@@ -4,7 +4,7 @@ import PropTypes from 'prop-types'
 import { Form } from '../../../UI/Form'
 import { Input } from '../../../UI/Input'
 
-import styles from './FormView.css'
+import styles from './View.css'
 
 const TasksFormView = ({ name, isValid, onChange, onSubmit }) => (
   <Form onSubmit={onSubmit} className={styles['task-form']}>

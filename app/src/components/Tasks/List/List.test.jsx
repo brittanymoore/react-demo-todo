@@ -1,27 +1,35 @@
 import React from 'react'
 import { shallow } from 'enzyme'
-import { TasksList } from '.'
-import { TasksListItem } from '../ListItem'
+import td from 'testdouble'
+import { TasksListContainer } from '.'
+import { TasksListView } from './View'
 
-describe('TasksList', () => {
+describe('TasksListContainer', () => {
   it('shallow renders without crashing', () => {
-    shallow(<TasksList />)
+    shallow(<TasksListContainer.WrappedComponent />)
   })
 
-  it('should render name', () => {
-    const name = 'My List'
-    const subject = shallow(<TasksList name={name} />)
+  it('should display tasks', () => {
+    const tasks = [{ id: 'the-task' }]
+    const subject = shallow(
+      <TasksListContainer.WrappedComponent tasks={tasks} />
+    )
 
-    expect(subject.find('h2').props().children).toBe('My List')
+    expect(subject.find(TasksListView).props().tasks).toEqual(tasks)
   })
 
-  it('should render tasks', () => {
-    const tasks = [
-      { id: 'a-task', name: 'A Task' },
-      { id: 'another-task', name: 'Another Task' }
-    ]
-    const subject = shallow(<TasksList tasks={tasks} />)
+  it('should handle toggle', () => {
+    const updateTask = td.func()
+    const tasks = [{ id: 'the-first' }, { id: 'the-second' }]
+    const subject = shallow(
+      <TasksListContainer.WrappedComponent
+        tasks={tasks}
+        updateTask={updateTask}
+      />
+    )
 
-    expect(subject.find(TasksListItem).length).toBe(2)
+    subject.find(TasksListView).simulate('toggle', 'the-first')
+
+    td.verify(updateTask({ id: 'the-first', complete: true }))
   })
 })
