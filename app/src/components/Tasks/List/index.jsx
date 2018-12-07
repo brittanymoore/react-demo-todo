@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import * as actions from '../../../state/actions/tasks'
 
-import { TasksListView } from './View'
+import TasksListView from './View'
 
 class TasksListContainer extends React.Component {
   static propTypes = {
@@ -57,4 +57,4 @@ const withHandlers = connect(
   mapStateToProps,
   mapDispatchToProps
 )(TasksListContainer)
-export { withHandlers as TasksListContainer }
+export default withHandlers

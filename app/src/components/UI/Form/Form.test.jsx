@@ -1,6 +1,6 @@
 import React from 'react'
 import { shallow } from 'enzyme'
-import { Form } from '.'
+import Form from '.'
 
 describe('Form', () => {
   it('shallow renders without crashing', () => {

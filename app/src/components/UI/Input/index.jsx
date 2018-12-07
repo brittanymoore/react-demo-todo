@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 
 import styles from './Input.css'
 
-export class Input extends React.Component {
+export default class Input extends React.Component {
   static propTypes = {
     value: PropTypes.string,
     onChange: PropTypes.func,

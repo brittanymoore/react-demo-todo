@@ -1,4 +1,4 @@
-import { TasksApi } from './tasks'
+import TasksApi from './tasks'
 
 describe('TasksApi', () => {
   it('should add a task', () => {

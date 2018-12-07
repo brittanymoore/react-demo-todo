@@ -1,6 +1,6 @@
 import React from 'react'
 import { shallow } from 'enzyme'
-import { Input } from '.'
+import Input from '.'
 
 describe('Input', () => {
   it('shallow renders without crashing', () => {

@@ -1,8 +1,8 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import { Provider } from 'react-redux'
-import { App } from './App'
-import { configureStore } from './state/store/configure-store'
+import App from './App'
+import configureStore from './state/store/configure-store'
 import { getTasks } from './state/actions/tasks'
 
 import 'normalize.css'

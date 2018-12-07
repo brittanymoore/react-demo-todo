@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-export class Form extends React.Component {
+export default class Form extends React.Component {
   static propTypes = {
     onSubmit: PropTypes.func,
     children: PropTypes.arrayOf(PropTypes.element),

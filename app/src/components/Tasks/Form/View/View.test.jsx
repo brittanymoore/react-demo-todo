@@ -1,8 +1,8 @@
 import React from 'react'
 import { shallow } from 'enzyme'
-import { TasksFormView } from '.'
-import { Form } from '../../../UI/Form'
-import { Input } from '../../../UI/Input'
+import TasksFormView from '.'
+import Form from '../../../UI/Form'
+import Input from '../../../UI/Input'
 
 describe('TasksFormView', () => {
   it('shallow renders without crashing', () => {

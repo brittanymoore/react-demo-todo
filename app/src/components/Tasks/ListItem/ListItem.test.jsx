@@ -1,6 +1,6 @@
 import React from 'react'
 import { shallow } from 'enzyme'
-import { TasksListItem } from '.'
+import TasksListItem from '.'
 
 describe('TasksListItem', () => {
   it('shallow renders without crashing', () => {

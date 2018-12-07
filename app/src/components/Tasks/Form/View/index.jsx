@@ -1,8 +1,8 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-import { Form } from '../../../UI/Form'
-import { Input } from '../../../UI/Input'
+import Form from '../../../UI/Form'
+import Input from '../../../UI/Input'
 
 import styles from './View.css'
 
@@ -24,4 +24,4 @@ TasksFormView.propTypes = {
   onSubmit: PropTypes.func
 }
 
-export { TasksFormView }
+export default TasksFormView

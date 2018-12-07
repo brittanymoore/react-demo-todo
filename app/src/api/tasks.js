@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-export class TasksApi {
+export default class TasksApi {
   constructor({ client, apiUrl } = {}) {
     this.client = client || axios
     this.apiUrl = apiUrl || process.env.API_URL

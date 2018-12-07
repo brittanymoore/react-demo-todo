@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-import { TasksListItem } from '../../ListItem'
+import TasksListItem from '../../ListItem'
 
 import styles from './List.css'
 
@@ -27,4 +27,4 @@ TasksListView.defaultProps = {
   tasks: []
 }
 
-export { TasksListView }
+export default TasksListView

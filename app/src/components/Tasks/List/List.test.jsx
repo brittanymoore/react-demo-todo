@@ -1,8 +1,8 @@
 import React from 'react'
 import { shallow } from 'enzyme'
 import td from 'testdouble'
-import { TasksListContainer } from '.'
-import { TasksListView } from './View'
+import TasksListContainer from '.'
+import TasksListView from './View'
 
 describe('TasksListContainer', () => {
   it('shallow renders without crashing', () => {

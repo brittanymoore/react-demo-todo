@@ -1,7 +1,7 @@
 /* eslint-disable no-case-declarations */
 
 import * as types from '../actions/action-types'
-import { initialState } from './initial-state'
+import initialState from './initial-state'
 
 export default function tasksReducer(state = initialState.tasks, action) {
   switch (action.type) {
