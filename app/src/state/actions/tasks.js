@@ -1,10 +1,7 @@
 import * as types from './action-types'
-import TasksApi from '../../api/tasks'
-
-const api = new TasksApi()
 
 export function getTasks() {
-  return function(dispatch) {
+  return function(dispatch, getState, api) {
     return api
       .getTasks()
       .then(tasks => {
@@ -16,12 +13,12 @@ export function getTasks() {
   }
 }
 
-export function getTasksSuccess(tasks) {
+function getTasksSuccess(tasks) {
   return { type: types.GET_TASKS_SUCCESS, tasks }
 }
 
 export function addTask(task) {
-  return function(dispatch) {
+  return function(dispatch, getState, api) {
     return api
       .addTask(task)
       .then(addedTask => {
@@ -33,12 +30,12 @@ export function addTask(task) {
   }
 }
 
-export function addTaskSuccess(task) {
+function addTaskSuccess(task) {
   return { type: types.ADD_TASK_SUCCESS, task }
 }
 
 export function updateTask(task) {
-  return function(dispatch) {
+  return function(dispatch, getState, api) {
     return api
       .updateTask(task)
       .then(addedTask => {
@@ -50,6 +47,6 @@ export function updateTask(task) {
   }
 }
 
-export function updateTaskSuccess(task) {
+function updateTaskSuccess(task) {
   return { type: types.UPDATE_TASK_SUCCESS, task }
 }
